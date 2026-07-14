@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParábolaSim - Ejercicios</title>
+    <link rel="stylesheet" href="/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">ParábolaSim</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="/index.html">Inicio</a></li>
+                    <li><a href="/Teoria.html">Teoría</a></li>
+                    <li><a href="/Ejercicio.html">Ejercicios</a></li>
+                    <li><a href="/Contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="contenido-ejercicios">
+            <h1>Ejercicios de Tiro Parabólico</h1>
+            <p class="descripcion-pag">Pon a prueba tus conocimientos resolviendo los siguientes problemas. Puedes usar nuestro simulador interactivo en la pestaña de "Inicio" para comprobar tus respuestas en tiempo real.</p>
+            
+            <hr>
+
+            <div class="tarjeta-ejercicio">
+                <h2>Ejercicio 1: El Lanzamiento del Cañón</h2>
+                <p>Un cañón dispara un proyectil desde el suelo con una velocidad inicial $v_0 = 30 \text{ m/s}$ y un ángulo de inclinación $\theta = 45^\circ$. Tomando en cuenta que la gravedad es $g = 9.8 \text{ m/s}^2$, calcula:</p>
+                <ul>
+                    <li>a. El tiempo total de vuelo del proyectil.</li>
+                    <li>b. La altura máxima alcanzada.</li>
+                    <li>c. El alcance horizontal máximo.</li>
+                </ul>
+                <div class="pista">
+                    <p> <b>Pista del simulador:</b> Coloca estos mismos datos exactos en la pantalla de inicio para verificar gráficamente tus resultados matemáticos.</p>
+                </div>
+            </div>
+
+            <div class="tarjeta-ejercicio">
+                <h2>Ejercicio 2: El Despeje del Portero</h2>
+                <p>Un portero patea un balón de fútbol desde el césped con una velocidad de $18 \text{ m/s}$ formando un ángulo de $30^\circ$ con el suelo ($g = 9.8 \text{ m/s}^2$). Determina:</p>
+                <ul>
+                    <li>a. Las componentes iniciales de la velocidad en el eje horizontal ($v_x$) y en el eje vertical ($v_{y0}$).</li>
+                    <li>b. ¿Cuánto tiempo tarda el balón en alcanzar su punto más alto?</li>
+                </ul>
+            </div>
+
+            <div class="tarjeta-ejercicio">
+                <h2>Ejercicio 3: El Saque de Tenis</h2>
+                <p>Un tenista golpea una pelota a ras de suelo logrando que salga con una velocidad inicial de $25 \text{ m/s}$. Si se sabe que el ángulo de tiro fue de $60^\circ$ y que la gravedad de la Tierra es $g = 9.8 \text{ m/s}^2$:</p>
+                <ul>
+                    <li>a. ¿Cuál es la altura máxima que alcanza la pelota en el aire?</li>
+                    <li>b. ¿A qué distancia horizontal del tenista volverá a tocar el suelo la pelota?</li>
+                </ul>
+            </div>
+
+            <div class="tarjeta-ejercicio">
+                <h2>Ejercicio 4: La Flecha del Arquero</h2>
+                <p>Un arquero lanza una flecha con una velocidad de $40 \text{ m/s}$ apuntando hacia una diana. Si quiere conseguir el **alcance horizontal máximo** posible utilizando esa velocidad:</p>
+                <ul>
+                    <li>a. ¿Qué ángulo de elevación ($\theta$) exacto debe configurar en su tiro?</li>
+                    <li>b. Usando ese ángulo, ¿a cuántos metros de distancia horizontal máxima ($X_{max}$) logrará clavar la flecha? (Usa $g = 9.8 \text{ m/s}^2$).</li>
+                </ul>
+            </div>
+
+            <div class="tarjeta-ejercicio">
+                <h2>Ejercicio 5: Superando la Barrera</h2>
+                <p>En un partido de rugby, un jugador patea el balón con una velocidad de $20 \text{ m/s}$ y un ángulo de $37^\circ$. A una distancia horizontal de exactamente $24 \text{ metros}$ se encuentra un muro defensivo de $3 \text{ metros}$ de altura.</p>
+                <ul>
+                    <li>a. ¿Cuánto tiempo ($t$) tarda el balón en avanzar esos $24 \text{ metros}$ horizontalmente?</li>
+                    <li>b. Calcula la altura vertical ($y$) del balón en ese tiempo exacto. ¿Logra pasar por encima del muro de $3 \text{ metros}$ o choca contra él?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError : false
+            });
+        });
+    </script>
+</body>
+</html>  

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Movimiento Parabólico - Laboratorio Físico</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="main">
+        
+        <div class="navbar-simulador-unificada">
+            <div class="icon">
+                <h2 class="logo">ParabolaSim</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="/index.html">🏠 INICIO</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="simulador-pantalla-completa">
+            
+            <div class="barra-herramientas-sim">
+                <div class="bloque-salidas">
+                    <button class="btn-accion-top btn-azul" onclick="volverANiveles()">📊 Cambiar Nivel</button>
+                </div>
+                <div id="indicador-nivel">Nivel: <span id="nombre-nivel">Ninguno</span></div>
+                <button class="btn-accion-top btn-verde" onclick="abrirManual()">❓ Ver Manual</button>
+            </div>
+
+            <div class="zona-interactiva-central">
+                <div id="canvas-container">
+                    <canvas id="simCanvas" width="950" height="480"></canvas>
+                </div>
+
+                <div class="panel-historial-lateral">
+                    <h3>📋 Tiros Registrados</h3>
+                    <div class="contenedor-tabla">
+                        <table id="tabla-historial">
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Ángulo</th>
+                                    <th>Vel.</th>
+                                    <th>Alt. Máx</th>
+                                    <th>Alcance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpo-historial">
+                            </tbody>
+                        </table>
+                    </div>
+                    <button id="btn-limpiar-historial" onclick="limpiarHistorialTablas()">Limpiar Registro</button>
+                </div>
+            </div>
+
+            <div id="controls-panel">
+                <div class="control-group" id="grupo-angulo">
+                    <label>Ángulo de Tiro:</label>
+                    <div class="slider-container">
+                        <input type="range" id="txt-angulo" min="0" max="90" value="45">
+                        <span class="value-display" id="val-angulo">45°</span>
+                    </div>
+                </div>
+
+                <div class="control-group" id="grupo-velocidad">
+                    <label>Velocidad Inicial:</label>
+                    <div class="slider-container">
+                        <input type="range" id="txt-velocidad" min="0" max="50" value="20">
+                        <span class="value-display" id="val-velocidad">20 m/s</span>
+                    </div>
+                </div>
+
+                <div class="control-group" id="grupo-masa" style="display: none;">
+                    <label>Masa del Objeto:</label>
+                    <div class="slider-container">
+                        <input type="range" id="txt-masa" min="1" max="50" value="5">
+                        <span class="value-display" id="val-masa">5 kg</span>
+                    </div>
+                </div>
+
+                <div class="control-group" id="grupo-gravedad" style="display: none;">
+                    <label>Gravedad:</label>
+                    <div class="slider-container">
+                        <input type="range" id="txt-gravedad" min="1" max="25" step="0.1" value="9.8">
+                        <span class="value-display" id="val-gravedad">9.8 m/s²</span>
+                    </div>
+                </div>
+
+                <div class="control-group" id="grupo-altura" style="display: none;">
+                    <label>Altura Inicial:</label>
+                    <div class="slider-container">
+                        <input type="range" id="txt-altura" min="0" max="30" value="0">
+                        <span class="value-display" id="val-altura">0 m</span>
+                    </div>
+                </div>
+
+                <div class="control-group" id="grupo-resistencia" style="display: none;">
+                    <label>Fuerza Arrastre:</label>
+                    <div class="slider-container">
+                        <input type="range" id="txt-resistencia" min="0" max="1" step="0.01" value="0">
+                        <span class="value-display" id="val-resistencia">0.00</span>
+                    </div>
+                </div>
+
+                <button id="btn-disparar" onclick="iniciarLanzamiento()" title="Lanzar Proyectil">¡Disparar!</button>
+            </div>
+
+            <div id="panel-explicacion">
+                <h3 id="titulo-explicacion">Pizarra del Estudiante</h3>
+                <p id="texto-explicacion">Configura las propiedades del tiro y presiona el disparador para analizar los vectores físicos.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal-externo" id="modal-niveles">
+        <div class="modal-contenido">
+            <h2>Selecciona el Nivel del Simulador</h2>
+            <div class="botones-nivel">
+                <button class="btn-nivel" onclick="configurarNivel('primaria')">Estudiante Primaria</button>
+                <button class="btn-nivel" onclick="configurarNivel('secundaria')">Estudiante Secundaria</button>
+                <button class="btn-nivel" onclick="configurarNivel('universidad')">Estudiante Universidad</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-externo" id="modal-manual" style="display: none;">
+        <div class="modal-contenido-manual">
+            <h2>Manual de Uso del Simulador</h2>
+            <div class="pasos-manual">
+                <p><strong>1. Parámetros:</strong> Modifica las barras inferiores habilitadas para tu nivel.</p>
+                <p><strong>2. Lanzamiento:</strong> Usa el botón circular rojo de la derecha para disparar el proyectil.</p>
+                <p><strong>3. Comparativa:</strong> Observa la tabla del extremo derecho para comparar el comportamiento de tus últimos lanzamientos.</p>
+            </div>
+            <button class="btn-cerrar-manual" onclick="cerrarManual()">Entendido</button>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

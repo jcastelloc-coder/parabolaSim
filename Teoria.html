@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParábolaSim - Teoría</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">ParábolaSim</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="/index.html">Inicio</a></li>
+                    <li><a href="/Teoria.html">Teoría</a></li>
+                    <li><a href="/Ejercicio.html">Ejercicios</a></li>
+                    <li><a href="/Contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contenido2">
+            <h1>Teoría del Tiro Parabólico</h1>
+            <p>El tiro <b>parabólico</b> es el movimiento que realiza un objeto (como el proyectil de nuestro cañón) cuando es lanzado al aire con un ángulo de inclinación. La única fuerza que actúa sobre él durante su viaje es la <b>gravedad</b>.</p>
+            <p>Se llama <b>parabólico</b> porque el camino que dibuja en el aire forma una curva perfecta llamada "parábola".</p>
+
+            <h2>1. El Secreto: Dos Movimientos en Uno</h2> 
+            <p>Para entender la física detrás del simulador, debes saber que el proyectil se mueve en dos direcciones al mismo tiempo. Cada dirección tiene sus propias reglas:</p> 
+
+            <h3>🔹 Movimiento Horizontal (Eje $X$)</h3>
+            <ul>
+                <li><b>La regla:</b> No hay ninguna fuerza que empuje o frene al objeto hacia adelante (ignorando el roce del aire).</li>
+                <li><b>El comportamiento:</b> La velocidad horizontal es <b>constante</b> (siempre es la misma). Es un Movimiento Rectilíneo Uniforme (MRU).</li>
+            </ul>
+
+            <h3>🔹 Movimiento Vertical (Eje $Y$)</h3>
+            <ul>
+                <li><b>La regla:</b> La <b>gravedad</b> ($g \approx 9.8 \text{ m/s}^2$) tira del objeto constantemente hacia abajo.</li>
+                <li><b>El comportamiento:</b> Es como lanzar una pelota recto hacia arriba. Sube frenándose poco a poco hasta detenerse un instante en el punto más alto, y luego cae aumentando su velocidad cada vez más. Es un Movimiento Uniforme Acelerado (MUA).</li>
+            </ul>
+
+            <hr>
+
+            <h2>2. Las Variables Clave del Simulador</h2>
+            <p>Cuando juegues con los controles de la página, notarás que todo cambia según estos tres datos:</p>
+            <ul>
+                <li><b>Velocidad Inicial ($v_0$):</b> La fuerza con la que sale el proyectil. A mayor velocidad, más alto y lejos llegará.</li>
+                <li><b>Ángulo de Lanzamiento ($\theta$):</b> La inclinación del cañón. Si disparas a $45^\circ$, lograrás la <b>distancia máxima</b> posible.</li>
+                <li><b>Gravedad ($g$):</b> La fuerza invisible que frena la subida y acelera la caída.</li>
+            </ul>
+
+            <hr>
+
+            <h2>3. Las Fórmulas Matemáticas</h2>
+            <p>Para calcular los resultados, primero "rompemos" la velocidad inicial en sus dos componentes usando trigonometría:</p>
+            <ul>
+                <li>Velocidad horizontal: $v_x = v_0 \cdot \cos(\theta)$</li>
+                <li>Velocidad vertical inicial: $v_{y0} = v_0 \cdot \operatorname{sen}(\theta)$</li>
+            </ul>
+
+            <p>Con esto definido, usamos las <b>3 fórmulas principales</b>:</p>
+
+            <h3>⏱️ Tiempo de Vuelo ($t_v$)</h3>
+            <p>Es el tiempo total que el proyectil pasa flotando en el aire (desde que se dispara hasta que impacta el suelo).</p>
+            $$t_v = \frac{2 \cdot v_0 \cdot \operatorname{sen}(\theta)}{g}$$
+
+            <h3>🔝 Altura Máxima ($H_{max}$)</h3>
+            <p>Es el punto más alto de la trayectoria. En este sitio exacto, el objeto deja de subir y su velocidad vertical se vuelve $0$.</p>
+            $$H_{max} = \frac{v_0^2 \cdot \operatorname{sen}^2(\theta)}{2g}$$
+
+            <h3>🎯 Alcance Horizontal Máximo ($X_{max}$)</h3>
+            <p>Es la distancia total medida sobre el suelo desde el cañón hasta la diana u objetivo.</p>
+            $$X_{max} = \frac{v_0^2 \cdot \operatorname{sen}(2\theta)}{g}$$
+
+            <hr>
+
+            <h2>💡 Resumen para el Estudiante</h2>
+            <ul>
+                <li>El proyectil tarda <b>exactamente lo mismo</b> en subir a su altura máxima que en caer de regreso al suelo.</li>
+                <li>En el punto más alto, la velocidad <b>no es cero</b>; la velocidad vertical sí es cero, pero el objeto se sigue moviendo hacia adelante gracias a $v_x$.</li>
+                <li>Cambiar el ángulo cambia la forma de la parábola, pero el alcance máximo siempre se dará a los $45^\circ$.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError : false
+            });
+        });
+    </script>
+</body>
+</html>
